@@ -4,8 +4,8 @@ import QuoterContext from '../context/QuoterProvider.jsx'
 
 const Form = () => {
 
-    const { hola } = useContext(QuoterContext)
-    console.log(hola)
+    const { helloWorld } = useContext(QuoterContext)
+    helloWorld();
   return (
     <>
         <form>

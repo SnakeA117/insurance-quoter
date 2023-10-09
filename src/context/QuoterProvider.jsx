@@ -4,12 +4,14 @@ const QuoterContext = createContext()
 
 const QuoterProvider = ({children}) => {
 
-    const hola = "hola mundo"
+    const helloWorld = () => {
+        console.log('Hello World from function!')
+    }
 
     return(
         <QuoterContext.Provider
         value={{
-            hola
+            helloWorld
 
         }}>
             {children}

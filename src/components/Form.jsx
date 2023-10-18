@@ -1,21 +1,36 @@
-import { Fragment, useContext } from 'react'
+import { Fragment } from 'react'
 import { BRANDS, YEARS, PLANS } from '../constants/index.js'
-import QuoterContext from '../context/QuoterProvider.jsx'
+import useQuoter from '../hooks/useQuoter.jsx'
+
 
 const Form = () => {
 
-    const { helloWorld } = useContext(QuoterContext)
-    helloWorld();
+  const { datas, handleChangeData, error, setError } = useQuoter()
+  const handleSubmit = e => {
+    e.preventDefault()
+
+    if (Object.values(datas).includes('')) {
+        setError('Todos los campos son obligatorios')
+        return
+    }
+  }
   return (
     <>
-        <form>
+
+
+        <form
+            onSubmit={handleSubmit}
+        >
             <div className="my-5">
                 <label className="block mb-3 font-bold text-gray-400 uppercase">
                     Brand
                 </label>
                         <select
                 name="brand"
-                className="w-full p-3 b-white border border-gray-200">
+                className="w-full p-3 b-white border border-gray-200"
+                onChange={ e => handleChangeData(e)}
+                value={datas.brand}
+                >
                     <option value="">-- Select brand --</option>
 
                     {BRANDS.map(brand => (
@@ -34,8 +49,11 @@ const Form = () => {
                     Year
                 </label>
                         <select
-                name="brand"
-                className="w-full p-3 b-white border border-gray-200">
+                name="year"
+                className="w-full p-3 b-white border border-gray-200"
+                onChange={ e => handleChangeData(e)}
+                value={datas.year}
+                >
                     <option value="">-- Select year --</option>
 
                     {YEARS.map(year => (
@@ -63,7 +81,8 @@ const Form = () => {
                                 type="radio"
                                 name="plan"
                                 value={plan.id}
-                                
+                                onChange={ e => handleChangeData(e)}
+                            
                             />
                         </Fragment>
                     ))}

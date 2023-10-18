@@ -1,11 +1,13 @@
 import { Fragment } from 'react'
 import { BRANDS, YEARS, PLANS } from '../constants/index.js'
 import useQuoter from '../hooks/useQuoter.jsx'
+import Error from './Error.jsx'
+
 
 
 const Form = () => {
 
-  const { datas, handleChangeData, error, setError } = useQuoter()
+  const { datas, handleChangeData, error, setError, quoteInsurance } = useQuoter()
   const handleSubmit = e => {
     e.preventDefault()
 
@@ -13,11 +15,16 @@ const Form = () => {
         setError('Todos los campos son obligatorios')
         return
     }
+    setError('')
+
+    quoteInsurance()
   }
+
+
   return (
     <>
 
-
+        {error &&  <Error/>}
         <form
             onSubmit={handleSubmit}
         >

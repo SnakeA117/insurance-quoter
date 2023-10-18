@@ -20,13 +20,30 @@ const QuoterProvider = ({children}) => {
         })
     }
 
+    
+    const quoteInsurance = () => {
+       // Base
+
+       // How difference
+
+       //3% less per year
+
+       // American 15%
+       // European 30%
+       // Asian 5%
+
+       // Basic 20%
+       // Complete 50%
+    }
+
     return(
         <QuoterContext.Provider
         value={{
             datas,
             handleChangeData,
             error,
-            setError
+            setError,
+            quoteInsurance
         }}>
             {children}
         </QuoterContext.Provider>

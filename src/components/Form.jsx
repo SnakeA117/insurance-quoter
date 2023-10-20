@@ -12,7 +12,7 @@ const Form = () => {
     e.preventDefault()
 
     if (Object.values(datas).includes('')) {
-        setError('Todos los campos son obligatorios')
+        setError('All fields are required')
         return
     }
     setError('')

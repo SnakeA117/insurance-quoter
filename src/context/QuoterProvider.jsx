@@ -39,7 +39,7 @@ const QuoterProvider = ({children}) => {
        // European 30%
        // Asian 5%
        result *= calculateBrand(datas.brand)
-       console.log(result)
+
        // Basic 20%
        // Complete 50%
 
@@ -47,7 +47,7 @@ const QuoterProvider = ({children}) => {
        console.log(result)
     }
 
-    
+
     return(
         <QuoterContext.Provider
         value={{

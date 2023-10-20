@@ -1,11 +1,12 @@
 
 import useQuoter from "../hooks/useQuoter"
 import Form from "./Form"
-
-
+import Spinner from "./Spinner"
+import Result from "./Result"
 
 const AppInsurance = () => {
 
+  const { result, load } = useQuoter()
 
   return (
     <>
@@ -15,6 +16,8 @@ const AppInsurance = () => {
 
         <main className="bg-white md:w-2/3 lg:w-2/4 mx-auto shadow rounded-lg p-10">
             <Form/>
+
+            {load ? <Spinner/> : <Result/>}
         </main>
 
     </>

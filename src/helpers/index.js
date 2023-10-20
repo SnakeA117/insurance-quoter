@@ -26,3 +26,10 @@ export function calculateBrand(brand) {
 export function calculatePlan(plan){
     return (plan === "1") ? 1.2 : 1.5;
 }
+
+export function formatAmount(amount) {
+    return amount.toLocaleString('en-US', {
+        style: 'currency',
+        currency: "USD",
+    })
+}

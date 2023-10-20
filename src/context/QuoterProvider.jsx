@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react'
-import { obtainDifferenceYear, calculateBrand, calculatePlan } from '../helpers'
+import { obtainDifferenceYear, calculateBrand, calculatePlan, formatAmount } from '../helpers'
 
 const QuoterContext = createContext()
 
@@ -12,8 +12,8 @@ const QuoterProvider = ({children}) => {
     })
 
     const [error, setError] = useState('')
-
-
+    const [result, setResult] = useState(0)
+    const [load, setLoad] = useState(false)
     const handleChangeData = e => {
         setData({
             ...datas,
@@ -44,7 +44,15 @@ const QuoterProvider = ({children}) => {
        // Complete 50%
 
        result *= calculatePlan(datas.plan)
-       console.log(result)
+
+       // Format amount 
+       result = formatAmount(result)
+       setLoad(true)
+       setTimeout(() => {
+          setResult(result)
+          setLoad(false)
+       }, 3000)
+       setResult(result)
     }
 
 
@@ -55,7 +63,9 @@ const QuoterProvider = ({children}) => {
             handleChangeData,
             error,
             setError,
-            quoteInsurance
+            quoteInsurance,
+            result,
+            load
         }}>
             {children}
         </QuoterContext.Provider>
